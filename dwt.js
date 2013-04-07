@@ -6,10 +6,8 @@ var jsdwt = {
             throw "The array must be of even length.";   
         }
 		
-	var result;
-		
-        while (level >= 1) {
-		
+	var result;	
+        while (level >= 1) {	
 	    n = arr.length;
 	    var avg = new Array(n/2);
 	    var diff = new Array(n/2);
