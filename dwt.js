@@ -8,7 +8,7 @@ var jsdwt = {
 		
 	var result;	
         while (level >= 1) {	
-	    n = arr.length;
+	    var n = arr.length;
 	    var avg = new Array(n/2);
 	    var diff = new Array(n/2);
 	    
