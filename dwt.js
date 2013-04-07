@@ -1,5 +1,9 @@
 var jsdwt = {
     
+
+    // Performs a 1d Haar wavelet transform on an array of even length.
+    // Returns an array where the first n/2 elements contain the averages and
+    // the remaining n/2 elements contain the details.
     Haar_1d: function(arr, level) {
 
         if (arr.length % 2 != 0) {
