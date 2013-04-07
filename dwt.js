@@ -18,7 +18,6 @@ var jsdwt = {
 		    avg[i] = avg[i] / Math.sqrt(2);
 		    diff[i] = arr[2*i] - avg[i];
 		}
-
 	    }
 			
 	    arr = avg;
