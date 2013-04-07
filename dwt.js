@@ -13,7 +13,7 @@ var jsdwt = {
 	    var diff = new Array(n/2);
 	    
 	    for (var count = n; count > 1; count /= 2) {
-		for (i=0; i<count/2; i++) {
+		for (i = 0; i < count/2; i++) {
 		    avg[i] = (arr[2*i] + arr[2*i + 1]) / 2;
 		    avg[i] = avg[i] / Math.sqrt(2);
 		    diff[i] = arr[2*i] - avg[i];
@@ -26,7 +26,7 @@ var jsdwt = {
 			
 	    if (level == 0) {
 		result = new Array(n/2);
-		for (i=0; i<n/2; i++) {
+		for (i = 0; i < n/2; i++) {
 		    result[i] = avg[i];
 		    result[i + n/2] = diff[i];
 		}
