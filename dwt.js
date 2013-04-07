@@ -6,10 +6,6 @@ var jsdwt = {
     // the remaining n/2 elements contain the details.
     Haar_1d: function(arr, level) {
 
-        if (arr.length % 2 != 0) {
-            throw "The array must be of even length.";   
-        }
-		
 	var result;	
         while (level >= 1) {	
 	    var n = arr.length;
@@ -37,8 +33,6 @@ var jsdwt = {
 	}
 	return result;
     }
-
-
 
     // Computes a 2d Haar wavelet transform, a columnwise 1d Haar wavelet 
     // transform, on a 2d array. The number of rows in the array must be even.
