@@ -1,6 +1,7 @@
 var jsdwt = {
     
-    // Computes a 1d Haar wavelet transform on an array of even length.
+    // Computes a 1d Haar wavelet transform on an array of even length to the
+    // specified level.
     //
     // Returns an array where the first n/2 elements contain the averages and
     // the remaining n/2 elements contain the details.
@@ -39,7 +40,8 @@ var jsdwt = {
     }
 
     // Computes a 2d Haar wavelet transform (a columnwise 1d Haar wavelet 
-    // transform) on a 2d array. The number of rows in the array must be even.
+    // transform) on a 2d array to the specified level. The number of rows in 
+    // the array must be even.
     //
     // Returns a 2d array where for each column the first n/2 elements contain 
     // the averages and the remaining n/2 elements contain the details.
