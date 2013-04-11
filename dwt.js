@@ -1,10 +1,9 @@
 var jsdwt = {
-    
-    // Computes a 1d Haar wavelet transform on an array of even length to the
-    // specified level.
-    //
-    // Returns an array where the first n/2 elements contain the averages and
-    // the remaining n/2 elements contain the details.
+
+
+    // This function is not yet finished.
+    // TODO: fix multi-level transform so that higher levels are in the
+    // canonical array locations
     Haar_1d: function(arr, level) {
 
         if (arr.length % 2 != 0) {
@@ -39,12 +38,11 @@ var jsdwt = {
 	return result;
     }
 
-    // Computes a 2d Haar wavelet transform (a columnwise 1d Haar wavelet 
-    // transform) on a 2d array to the specified level. The number of rows in 
-    // the array must be even.
-    //
-    // Returns a 2d array where for each column the first n/2 elements contain 
-    // the averages and the remaining n/2 elements contain the details.
+    // This function is not yet finished.
+    // TODO: re-factor to use 1d transform in loop
+    // TODO: add row transform
+    // TODO: fix multi-level transform so that higher levels are in the
+    // canonical array location
     Haar_2d: function(arr, level) {
 
 	for (var m = 0; m < arr.length; m++) {
@@ -81,6 +79,8 @@ var jsdwt = {
 	    }
 	    level -= 1;
 	}
+	//TODO: add row-wise transform
+
 	return arr;
     }
 }
