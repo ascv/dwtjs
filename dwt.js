@@ -23,7 +23,7 @@ var jsdwt = {
 		    diff[i] = arr[2*i] - avg[i];
 		}
 	    }
-			
+
 	    arr = avg;
 	    level -= 1;
 			
@@ -44,6 +44,13 @@ var jsdwt = {
     // Returns a 2d array where for each column the first n/2 elements contain 
     // the averages and the remaining n/2 elements contain the details.
     Haar_2d: function(arr, level) {
+
+	for (var m = 0; m < arr.length; m++) {
+            if (arr[m].length % 2 != 0) {
+		throw "Column " + m + " is not of even length.";   
+            }
+	}
+
         while (level >= 1) {
 	    for (var m = 0; m < arr.length; m++) {
 
