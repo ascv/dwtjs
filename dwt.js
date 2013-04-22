@@ -1,9 +1,5 @@
 var jsdwt = {
 
-
-    // This function is not yet finished.
-    // TODO: fix multi-level transform so that higher levels are in the
-    // canonical array locations
     Haar_1d: function(arr, level) {
 
         if (arr.length % 2 != 0)
@@ -17,7 +13,7 @@ var jsdwt = {
 
 	for (var i = 1; i <= level; i++) {
 	    this._Haar_1d(result, n);
-	    console.log(result);
+	    n /= 2;
 	}
 
 	return result;
@@ -33,6 +29,7 @@ var jsdwt = {
 
 	    arr[i] = (sample + arr[2*i + 1]) / 2;
 	    diff[i] = (sample - arr[i]) / 2;
+
 	    arr[i] = arr[i] * Math.sqrt(2);
 	    diff[i] = diff[i] * Math.sqrt(2);
 	}
