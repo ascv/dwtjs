@@ -19,6 +19,8 @@ var jsdwt = {
 	    this._Haar_1d(result, n);
 	    console.log(result);
 	}
+
+	return result;
     },
 
     _Haar_1d: function(arr, n) {
@@ -30,10 +32,9 @@ var jsdwt = {
 	    sample = arr[2*i];
 
 	    arr[i] = (sample + arr[2*i + 1]) / 2;
-	    diff[i] = arr[i] - sample;
-
-	    arr[i] = arr[i] / Math.sqrt(2);
-	    diff[i] = diff[i] / Math.sqrt(2);
+	    diff[i] = (sample - arr[i]) / 2;
+	    arr[i] = arr[i] * Math.sqrt(2);
+	    diff[i] = diff[i] * Math.sqrt(2);
 	}
 
 	for (var i = 0; i < n/2; i++)
