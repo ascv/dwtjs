@@ -1,6 +1,6 @@
 var jsdwt = {
 
-    Haar_1d: function(arr, level) {
+    Haar1d: function(arr, level) {
 
         if (arr.length % 2 != 0)
             throw "The array must be of even length.";
@@ -19,7 +19,7 @@ var jsdwt = {
 	return result;
     },
 
-    _Haar_1d: function(arr, n) {
+    _Haar1dSingleLevelTransform: function(arr, n) {
 
 	var diff = new Array(n/2);
 	var sample;
