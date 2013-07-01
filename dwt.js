@@ -1,4 +1,4 @@
-var jsdwt = {
+var dwt = {
 
     Haar1d: function(arr, level) {
 
@@ -6,20 +6,20 @@ var jsdwt = {
             throw "The array must be of even length.";
 
 	if (level <= 0)
-	    throw "Level must be at least 1."
+	    throw "Level must be at least 1.";
 
 	var n = arr.length;
 	var result = arr.slice(0);
 
 	for (var i = 1; i <= level; i++) {
-	    this._Haar_1d(result, n);
+	    this._HaarSingleLevel(result, n);
 	    n /= 2;
 	}
 
 	return result;
     },
-
-    _Haar1dSingleLevelTransform: function(arr, n) {
+	
+    _HaarSingleLevel: function(arr, n) {
 
 	var diff = new Array(n/2);
 	var sample;
@@ -28,7 +28,7 @@ var jsdwt = {
 	    sample = arr[2*i];
 
 	    arr[i] = (sample + arr[2*i + 1]) / 2;
-	    diff[i] = (sample - arr[i]) / 2;
+	    diff[i] = (sample - arr[i]);
 
 	    arr[i] = arr[i] * Math.sqrt(2);
 	    diff[i] = diff[i] * Math.sqrt(2);
