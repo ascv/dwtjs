@@ -84,13 +84,7 @@ var dwt = {
 		    arr[k][i + n/2] = diff[i];
 		}
 	    }
-
-
-	    //as we transform copy the result back into the original array
-
-
 	}
-
     },
 
     _HaarSingleLevel: function(arr, n, rowBuffer, rowBufferIndex) {
