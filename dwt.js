@@ -76,10 +76,9 @@ var dwt = {
 		    rowBuffer[i][rowIndex] = arr[k][i];
 		}
 
-		rowIndex++;
-
 		for (var i = 0; i < n/2; i++)
 		    arr[k][i + n/2] = diff[i];
+		rowIndex++;
 	    }
 
 	    //loop over the rows
@@ -88,7 +87,6 @@ var dwt = {
 		var sample;
 
 		for (i = 0; i < n; i++) {
-
 		    // sample = rowBuffer[row][ith element in the row]
 		    sample = rowBuffer[k][2*i];
 
@@ -97,7 +95,6 @@ var dwt = {
 
 		    arr[k][i] = arr[k][i] * Math.sqrt(2);
 		    diff[i] = diff[i] * Math.sqrt(2);
-
 		}
 
 		for (var i = 0; i < n/2; i++)
