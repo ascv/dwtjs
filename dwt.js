@@ -19,8 +19,7 @@ var dwt = {
 	return result;
     },
 
-    _HaarSingleLevel: function(arr, n, rowBuffer, rowBufferIndex) {
-
+    _HaarSingleLevel: function(arr, n) {
 	if (n == null)
 	    n = arr.length;
 
@@ -42,6 +41,8 @@ var dwt = {
 	    arr[i + n/2] = diff[i];
     },
 
+    // TODO: perf test loop optimizations
+    // TODO: refactor to reduce redundancy
     Haar2d: function(arr, level) {
         if (arr.length % 2 != 0)
             throw "The array must be of even length.";
@@ -50,13 +51,17 @@ var dwt = {
 
 	var n = arr.length;
 	var result = arr.slice(0);
+	var rowBuffer = new Array(n/2);
 	var sample;
 	var sqrtTwo = Math.sqrt(2);
+
+	for (var z = 0; z < n/2; z++)
+	    rowBuffer(z) = new Array();
 
 	for (var z = 0; z < level; z++) { // loop over levels
 	    for (var j = 0; j < n; j++) { // loop over columns
 		var diff = new Array(n/2);
-		for (var i = 0; i < n/2; i++) { // do dwt on each column
+		for (var i = 0; i < n/2; i++) { // do dwt on the current column
 		    sample = result[j][2*i];
 
 		    result[j][i] = (sample + result[j][2*i + 1]) / 2;
@@ -69,7 +74,8 @@ var dwt = {
 		for (var i = 0; i < n/2; i++)
 		    result[j][i + n/2] = diff[i];
 	    }
-	    // now do dwt on each row
+	    // now loop over the rows
+	    // do dwt on the current row
 
 	    n /= 2;
 	}
