@@ -49,19 +49,25 @@ var dwt = {
 	if (level <= 0)
 	    throw "Level must be at least 1.";
 
-	var n = arr.length;
+	var n = arr[0].length; // column height
+	var m = arr.length; // number of columns
+
+
+	//TODO: use separate row height
 	var result = arr.slice(0);
-	var rowBuffer = new Array(n/2);
 	var sample;
 	var sqrtTwo = Math.sqrt(2);
 
-	for (var z = 0; z < n/2; z++)
-	    rowBuffer(z) = new Array();
+	// TODO: refactor for loop optmizations and performance test them
+	// e.g. use copy rows to a buffer in the first loop and
+        // use the buffer to do dwt on rows to avoid poor memory access patterns
+
 
 	for (var z = 0; z < level; z++) { // loop over levels
-	    for (var j = 0; j < n; j++) { // loop over columns
+	    for (var j = 0; j < m; j++) { // loop over columns
 		var diff = new Array(n/2);
 		for (var i = 0; i < n/2; i++) { // do dwt on the current column
+
 		    sample = result[j][2*i];
 
 		    result[j][i] = (sample + result[j][2*i + 1]) / 2;
@@ -71,15 +77,30 @@ var dwt = {
 		    diff[i] *= sqrtTwo;
 		}
 
-		for (var i = 0; i < n/2; i++)
+		for (var i = 0; i < n/2; i++) {
 		    result[j][i + n/2] = diff[i];
+		}
 	    }
-	    // now loop over the rows
-	    // do dwt on the current row
 
+	    /*
+	    for (var j = 0; j < n; j++) { // now loop over the rows
+		var diff = new Array(n/2);
+		for (var i = 0; i < n/2; i++) { // do the dwt on the current row
+		    sample = result[2 * i][j];
+
+		    result[i][j] = (sample + result[i][2*j +1]) / 2;
+		    diff[j] = sample - result[i][j];
+
+		    result[i][j] *= sqrtTwo;
+		    diff[j] *= sqrtTwo;
+		}
+		for (var i = 0; i < n/2; i++)
+		    result[i + n/2][j] = diff[j];
+	    }
+	    console.log("row transform:");
+	    console.log(result);*/
 	    n /= 2;
 	}
-	console.log(result);
 
 	return result;
     }
