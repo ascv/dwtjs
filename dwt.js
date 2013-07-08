@@ -41,8 +41,7 @@ var dwt = {
 	    arr[i + n/2] = diff[i];
     },
 
-    // TODO: perf test loop optimizations
-    // TODO: refactor to reduce redundancy
+
     Haar2d: function(arr, level) {
         if (arr.length % 2 != 0)
             throw "The array must be of even length.";
@@ -52,8 +51,6 @@ var dwt = {
 	var n = arr[0].length; // column height
 	var m = arr.length; // number of columns
 
-
-	//TODO: use separate row height
 	var result = arr.slice(0);
 	var sample;
 	var sqrtTwo = Math.sqrt(2);
@@ -61,7 +58,6 @@ var dwt = {
 	// TODO: refactor for loop optmizations and performance test them
 	// e.g. use copy rows to a buffer in the first loop and
         // use the buffer to do dwt on rows to avoid poor memory access patterns
-
 
 	for (var z = 0; z < level; z++) { // loop over levels
 	    for (var j = 0; j < m; j++) { // loop over columns
