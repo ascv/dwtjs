@@ -79,8 +79,8 @@ var dwt = {
 		}
 	    }
 
-	    /*
-	    for (var j = 0; j < n; j++) { // now loop over the rows
+	    
+	    for (var j = 0; j < m; j++) { // now loop over the rows
 		var diff = new Array(n/2);
 		for (var i = 0; i < n/2; i++) { // do the dwt on the current row
 		    sample = result[2 * i][j];
@@ -94,8 +94,6 @@ var dwt = {
 		for (var i = 0; i < n/2; i++)
 		    result[i + n/2][j] = diff[j];
 	    }
-	    console.log("row transform:");
-	    console.log(result);*/
 	    n /= 2;
 	    m /= 2;
 	}
