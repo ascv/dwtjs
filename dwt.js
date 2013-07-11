@@ -48,22 +48,18 @@ var dwt = {
 	if (level <= 0)
 	    throw "Level must be at least 1.";
 
-	// TODO: fix to mxn where m=# rows and n=# cols
-	var m = arr[0].length; // column height
+	var m = arr[0].length; // column of rows
 	var n = arr.length; // number of columns
 
 	var result = arr.slice(0);
 	var sample;
 	var sqrtTwo = Math.sqrt(2);
 
-	// TODO: refactor for loop optmizations and performance test them
-	// e.g. use copy rows to a buffer in the first loop and
-        // use the buffer to do dwt on rows to avoid poor memory access patterns
-
-	for (var z = 0; z < level; z++) { // loop over levels
-	    for (var j = 0; j < n; j++) { // loop over columns
+	// TODO: refactor for loop optmizations and performance test
+	for (var z = 0; z < level; z++) {
+	    for (var j = 0; j < n; j++) {
 		var diff = new Array(m/2);
-		for (var i = 0; i < m/2; i++) { // do dwt on the current column
+		for (var i = 0; i < m/2; i++) {
 
 		    sample = result[j][2*i];
 
@@ -78,11 +74,10 @@ var dwt = {
 		    result[j][i + m/2] = diff[i];
 		}
 	    }
-
 	    
-	    for (var j = 0; j < m; j++) { // now loop over the rows
+	    for (var j = 0; j < m/2; j++) {
 		var diff = new Array(n/2);
-		for (var i = 0; i < n/2; i++) { // do the dwt on the current row
+		for (var i = 0; i < n/2; i++) {
 		    sample = result[2 * i][j];
 
 		    result[i][j] = (sample + result[i][2*j +1]) / 2;
