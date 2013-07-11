@@ -48,8 +48,9 @@ var dwt = {
 	if (level <= 0)
 	    throw "Level must be at least 1.";
 
-	var n = arr[0].length; // column height
-	var m = arr.length; // number of columns
+	// TODO: fix to mxn where m=# rows and n=# cols
+	var m = arr[0].length; // column height
+	var n = arr.length; // number of columns
 
 	var result = arr.slice(0);
 	var sample;
@@ -60,9 +61,9 @@ var dwt = {
         // use the buffer to do dwt on rows to avoid poor memory access patterns
 
 	for (var z = 0; z < level; z++) { // loop over levels
-	    for (var j = 0; j < m; j++) { // loop over columns
-		var diff = new Array(n/2);
-		for (var i = 0; i < n/2; i++) { // do dwt on the current column
+	    for (var j = 0; j < n; j++) { // loop over columns
+		var diff = new Array(m/2);
+		for (var i = 0; i < m/2; i++) { // do dwt on the current column
 
 		    sample = result[j][2*i];
 
@@ -73,8 +74,8 @@ var dwt = {
 		    diff[i] *= sqrtTwo;
 		}
 
-		for (var i = 0; i < n/2; i++) {
-		    result[j][i + n/2] = diff[i];
+		for (var i = 0; i < m/2; i++) {
+		    result[j][i + m/2] = diff[i];
 		}
 	    }
 
@@ -96,6 +97,7 @@ var dwt = {
 	    console.log("row transform:");
 	    console.log(result);*/
 	    n /= 2;
+	    m /= 2;
 	}
 
 	return result;
