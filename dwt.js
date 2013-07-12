@@ -42,9 +42,9 @@ var dwt = {
     },
 
 
-    Haar2d: function(arr, level) {
-        if (arr.length % 2 != 0)
-            throw "The array must be of even length.";
+    Haar2d: function(arr, maxLevel) {
+        if (arr.length % 2 != 0 || arr[0].length % 2 != 0)
+            throw "The matrix dimensions must be powers of 2.";
 	if (level <= 0)
 	    throw "Level must be at least 1.";
 
@@ -56,8 +56,8 @@ var dwt = {
 	var sqrtTwo = Math.sqrt(2);
 
 	// TODO: refactor for loop optmizations and performance test
-	for (var z = 0; z < level; z++) {
-	    for (var j = 0; j < n; j++) {
+	for (var level = 0; level < maxLevel; level++) {
+	    for (var j = 0; j < n; j++) { // loop over columns
 		var diff = new Array(m/2);
 		for (var i = 0; i < m/2; i++) {
 
@@ -75,7 +75,7 @@ var dwt = {
 		}
 	    }
 	    
-	    for (var j = 0; j < m/2; j++) {
+	    for (var j = 0; j < m/2; j++) { // loop over rows
 		var diff = new Array(n/2);
 		for (var i = 0; i < n/2; i++) {
 		    sample = result[2 * i][j];
