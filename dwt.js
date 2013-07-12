@@ -44,11 +44,11 @@ var dwt = {
 
     Haar2d: function(arr, maxLevel) {
         if (arr.length % 2 != 0 || arr[0].length % 2 != 0)
-            throw "The matrix dimensions must be powers of 2.";
+            throw "Matrix dimensions must be powers of 2.";
 	if (level <= 0)
 	    throw "Level must be at least 1.";
 
-	var m = arr[0].length; // column of rows
+	var m = arr[0].length; // number of rows
 	var n = arr.length; // number of columns
 
 	var result = arr.slice(0);
