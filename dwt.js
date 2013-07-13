@@ -51,7 +51,9 @@ var dwt = {
 	var m = arr[0].length; // number of rows
 	var n = arr.length; // number of columns
 
-	var result = arr.slice(0);
+	var result = new Array(n);
+	for (var i = 0; i < arr.length; i++)
+	    result[i] = arr[i].slice(0);
 	var sample;
 	var sqrtTwo = Math.sqrt(2);
 
