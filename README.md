@@ -1,4 +1,3 @@
-This javascript library provides convenience methods for discrete wavelet
-transforms.
+Not safe to use.
 
 v0.2
